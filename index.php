@@ -1,18 +1,37 @@
 <?php
 $lastName='Galindo Copado';
 $name = "Fabricio $lastName";
+$limitMonths = 12;
 $jobs =[
   [
     'title' => 'PHP Develper',
-    'description' => 'This is an awesome Job!!'
+    'description' => 'This is an awesome Job!!',
+    'visible' => true,
+    'months' => 6
   ],
   [
     'title' => 'Python Dev',
-    'description' => 'This is an great awesome Job!!'
+    'description' => 'This is an great awesome Job!!',
+    'visible' => true,
+    'months' => 4
   ],
   [
     'title' => 'Devops',
-    'description' => 'This is an fabulos awesome Job!!'
+    'description' => 'This is an fabulos awesome Job!!',
+    'visible' => true,
+    'months' => 5
+  ],
+  [
+    'title' => 'Node Dev',
+    'description' => 'This is an fabulos awesome Job!!',
+    'visible' => true,
+    'months' => 2
+  ],
+  [
+    'title' => 'Frontend Dev',
+    'description' => 'This is an fabulos awesome Job!!',
+    'visible' => true,
+    'months' => 3
   ]
 ];
 
@@ -67,11 +86,19 @@ $jobs =[
           <h3 class="border-bottom-gray" >Work Experience</h3>
           <ul>
             <?php
-            $idx = 0;
+            $totalMonths = 0;
               for($idx = 0;$idx < count($jobs);$idx++) {
-                echo '<li class="work-position">';
+                $totalMonths +=  $jobs[$idx]['months'];
+                if($totalMonths > $limitMonths){
+                  break;
+                }
+                if($jobs[$idx]['visible'] == false){
+                  continue;
+                }else{
+                  echo '<li class="work-position">';
                   echo '<h5>'.$jobs[$idx]['title'].'</h5>';
                   echo '<p>'. $jobs[$idx]['description'].'</p>';
+                  echo '<p>'. $totalMonths.'</p>';
                   echo '<strong>Achievements:</strong>';
                   echo '<ul>';
                     echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
@@ -79,6 +106,7 @@ $jobs =[
                     echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
                   echo '</ul>';
                 echo '</li>';
+                }  
               }
             ?>
           </ul>
