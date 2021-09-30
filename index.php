@@ -1,6 +1,23 @@
 <?php
 $lastName='Galindo Copado';
 $name = "Fabricio $lastName";
+$jobs =[
+  [
+    'title' => 'PHP Develper',
+    'description' => 'This is an awesome Job!!'
+  ],
+  [
+    'title' => 'Python Dev',
+    'description' => 'This is an great awesome Job!!'
+  ],
+  [
+    'title' => 'Devops',
+    'description' => 'This is an fabulos awesome Job!!'
+  ]
+  
+  
+  
+];
 ?>
 
 <!doctype html>
@@ -51,8 +68,8 @@ $name = "Fabricio $lastName";
           <h3 class="border-bottom-gray" >Work Experience</h3>
           <ul>
             <li class="work-position">
-              <h5>PHP Developer</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi sapiente sed pariatur sint exercitationem eos expedita eveniet veniam ullam, quia neque facilis dicta voluptatibus. Eveniet doloremque ipsum itaque obcaecati nihil.</p>
+              <h5><?php echo $jobs[0]['title']; ?></h5>
+              <p><?php echo $jobs[0]['description']; ?></p>
               <strong>Achievements:</strong>
               <ul>
                 <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
@@ -61,8 +78,8 @@ $name = "Fabricio $lastName";
               </ul>
             </li>
             <li class="work-position">
-                <h5>PHP Developer</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi sapiente sed pariatur sint exercitationem eos expedita eveniet veniam ullam, quia neque facilis dicta voluptatibus. Eveniet doloremque ipsum itaque obcaecati nihil.</p>
+                <h5><?php echo $jobs[1]['title']; ?></h5>
+                <p><?php echo $jobs[1]['description']; ?></p>
                 <strong>Achievements:</strong>
                 <ul>
                   <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
@@ -71,8 +88,8 @@ $name = "Fabricio $lastName";
                 </ul>
               </li>
               <li class="work-position">
-                  <h5>PHP Developer</h5>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi sapiente sed pariatur sint exercitationem eos expedita eveniet veniam ullam, quia neque facilis dicta voluptatibus. Eveniet doloremque ipsum itaque obcaecati nihil.</p>
+                  <h5><?php echo $jobs[2]['title']; ?></h5>
+                  <p><?php echo $jobs[2]['description']; ?></p>
                   <strong>Achievements:</strong>
                   <ul>
                     <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
