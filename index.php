@@ -1,3 +1,8 @@
+<?php
+$lastName='Galindo Copado';
+$name = "Fabricio $lastName";
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -11,7 +16,7 @@
     crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
 
-  <title>Resume</title>
+  <title>CV <?php echo $name; ?></title>
 </head>
 
 <body>
@@ -21,7 +26,7 @@
         <img id="profile-picture" src="https://ui-avatars.com/api/?name=John+Doe&size=255" alt="">
       </div>
       <div class="col">
-        <h1><?php echo 'Fabricio Galindo Copado'; ?></h1>
+        <h1><?php echo $name; ?></h1>
         <h2>PHP Developer</h2>
         <ul>
           <li>Mail: hector@mail.com</li>
