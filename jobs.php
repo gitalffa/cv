@@ -1,8 +1,37 @@
 <?php
 
+class Job{
+    private $title;
+    public $description;
+    public $visible;
+    public $months;
+
+    public function setTitle($title){
+        $this->title;
+    }
+
+    public function getTitle(){
+        return $this->title;
+    }
+}
+
+$job1 = new Job();
+$job1->setTitle('PHP Develper');
+$job1->description = 'This is an awesome Job!!';
+$job1->visible = true;
+$job1->months = 16;
+
+$job2 = new Job();
+$job2->setTitle('Python Dev');
+$job2->description = 'This is an great awesome Job!!';
+$job2->visible = true;
+$job2->months = 24;
+
 $jobs =[
-    [
-      'title' => 'PHP Develper',
+    $job1,
+    $job2
+    /*[
+       'title' => ,
       'description' => 'This is an awesome Job!!',
       'visible' => true,
       'months' => 16
@@ -30,7 +59,7 @@ $jobs =[
       'description' => 'This is an fabulos awesome Job!!',
       'visible' => true,
       'months' => 3
-    ]
+    ] */
   ];
 
   function getDuration($months){
@@ -44,13 +73,13 @@ $jobs =[
   }
   
   function printJob($job){
-    if($job['visible'] == false){
+    if($job->visible == false){
       return;
     }
     echo '<li class="work-position">';
-    echo '<h5>'.$job['title'].'</h5>';
-    echo '<p>'. $job['description'].'</p>';
-    echo '<p>'. getDuration($job['months']).'</p>';
+    echo '<h5>'.$job->getTitle().'</h5>';
+    echo '<p>'. $job->description.'</p>';
+    echo '<p>'. getDuration($job->months).'</p>';
    // echo '<p>'. $totalMonths.'</p>';
     echo '<strong>Achievements:</strong>';
     echo '<ul>';
