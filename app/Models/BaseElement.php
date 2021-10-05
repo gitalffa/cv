@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-require_once 'Printable.php';
+
 
 class BaseElement implements Printable{
     
@@ -12,7 +12,7 @@ class BaseElement implements Printable{
 
     public function __construct($title,$description){
         $this->setTitle($title);
-        $this->description = $description;
+        $this->setDescription($description);
     }
 
     public function setTitle($title){
@@ -28,6 +28,14 @@ class BaseElement implements Printable{
         return $this->title;
     }
 
+    public function setDescription($description){
+      if($description == ''){
+        $this->description='N/A';
+      }else{
+          $this->description = $description;
+      }
+    }
+
     public function getDurationAsString(){
         $years = floor($this->months/12);
         $extraMonths = $this->months % 12;
@@ -39,6 +47,6 @@ class BaseElement implements Printable{
       }
 
       public function getDescription() {
-        return $this->descrition;
+        return $this->description;
       }
 }
