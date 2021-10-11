@@ -8,6 +8,7 @@ require_once '../vendor/autoload.php';
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 use App\Models\Job;
+use App\Models\Project;
 
 $capsule = new Capsule;
 
@@ -35,6 +36,9 @@ $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
     $_COOKIE,
     $_FILES
 );
+
+
+
 
 var_dump($request->getUri()->getPath());
 
