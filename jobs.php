@@ -8,14 +8,6 @@ error_reporting(E_ALL);
 use App\Models\Project;
 use App\Models\Printable;  */
 
-use App\Models\{Job,Project};
-
-$jobs = Job::all();
-
-
-
-
-$projects = Project::all();
 
   
   

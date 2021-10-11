@@ -1,18 +1,3 @@
-<?php
-
-use App\Models\Job;
-
-if(!empty($_POST)){
-    $job = new Job();
-    $job->title =$_POST['title'];
-    $job->description =$_POST['description'];
-    $job->save();
-}
-
-
-
-?>
-
 <Html>
     <Head>
         <!-- Bootstrap CSS -->
@@ -23,7 +8,7 @@ if(!empty($_POST)){
     </Head>
     <Body>
         <h1>Add Job</h1>
-        <Form Action="addJob.php" method="post">
+        <Form Action="/cv/jobs/add" method="post">
                 <label for="">Title:</label>
                 <Input type="text" name = "title"></Input><br>
                 <label for="">Description:</label>

@@ -1,14 +1,3 @@
-<?php
-require_once 'vendor/autoload.php';
-
-use App\Models\Job;
-
-require('jobs.php');
-$lastName='Galindo Copado';
-$name = "Fabricio $lastName";
-$limitMonths = 2000;
-?>
-
 <!doctype html>
 <html lang="en">
 
