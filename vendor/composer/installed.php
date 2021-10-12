@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '57ca542a0cfcf232a6454e8d71ee7c9df618a72a',
+        'reference' => 'a5151d2dc92ee69bce40f5043a41ad88aa5b0320',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '57ca542a0cfcf232a6454e8d71ee7c9df618a72a',
+            'reference' => 'a5151d2dc92ee69bce40f5043a41ad88aa5b0320',
             'dev_requirement' => false,
         ),
         'aura/router' => array(
@@ -291,6 +291,15 @@
             'provided' => array(
                 0 => '2.3',
             ),
+        ),
+        'twig/twig' => array(
+            'pretty_version' => 'v3.3.3',
+            'version' => '3.3.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../twig/twig',
+            'aliases' => array(),
+            'reference' => 'a27fa056df8a6384316288ca8b0fa3a35fdeb569',
+            'dev_requirement' => false,
         ),
         'voku/portable-ascii' => array(
             'pretty_version' => '1.5.6',

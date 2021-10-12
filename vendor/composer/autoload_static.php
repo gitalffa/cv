@@ -41,6 +41,10 @@ class ComposerStaticInitae80765d55acc3db1da579d3358f41b9
         array (
             'voku\\' => 5,
         ),
+        'T' => 
+        array (
+            'Twig\\' => 5,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
@@ -92,6 +96,10 @@ class ComposerStaticInitae80765d55acc3db1da579d3358f41b9
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
