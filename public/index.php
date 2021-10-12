@@ -49,9 +49,17 @@ $map->get('addJobs', '/cv/jobs/add',[
     'controller' => 'App\Controllers\JobsController',
     'action' => 'getAddJobAction'
 ]);
+$map->get('addProjects', '/cv/projects/add',[
+    'controller' => 'App\Controllers\ProjectsController',
+    'action' => 'getAddProjectAction'
+]);
 $map->post('saveJobs', '/cv/jobs/add',[
     'controller' => 'App\Controllers\JobsController',
     'action' => 'getAddJobAction'
+]);
+$map->post('saveProject', '/cv/projects/add',[
+    'controller' => 'App\Controllers\ProjectsController',
+    'action' => 'getAddProjectAction'
 ]);
 
 
@@ -64,6 +72,7 @@ $route = $matcher->match($request);
     /* if($job->visible == false){
       return;
     }  */
+ 
     echo '<li class="work-position">';
     echo '<h5>'.$job->title.'</h5>';
     echo '<p>'. $job->description.'</p>';
