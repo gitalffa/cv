@@ -13,6 +13,6 @@ protected $TemplateEngine;
     }
 
     public function renderHTML($fileName,$data =[]){
-        return $this->templateEngine->render($fileName,$data);
+        return $this->TemplateEngine->render($fileName,$data);
     }
 }
