@@ -1,19 +1,3 @@
-<?php
-
-use App\Models\Project;
-
-
-if(!empty($_POST)){
-    $project = new Project();
-    $project->project =$_POST['project'];
-    $project->description =$_POST['description'];
-    $project->save();
-}
-
-
-
-?>
-
 <Html>
     <Head>
         <!-- Bootstrap CSS -->
@@ -24,7 +8,7 @@ if(!empty($_POST)){
     </Head>
     <Body>
         <h1>Add Project</h1>
-        <Form Action="addProject.php" method="post">
+        <Form Action="/cv/projects/add" method="post">
                 <label for="">Project:</label>
                 <Input type="text" name = "project"></Input><br>
                 <label for="">Description:</label>
