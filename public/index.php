@@ -95,8 +95,16 @@ if(!$route){
     $controllerName=$handlerData['controller'];
     $actionName = $handlerData['action'];
     $controller = new $controllerName;
-    $controller->$actionName($request);
-    //var_dump($route->handler['action']);
+    $response = $controller->$actionName($request);
+
+    /* $métodos_clase = get_class_methods($response);
+
+
+foreach ($métodos_clase as $nombre_método) {
+   echo "$nombre_método\n";
+} */
+   echo $response->getBody();
+ 
 }
 
 //var_dump($route->handler);
