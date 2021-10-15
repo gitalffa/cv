@@ -3,11 +3,16 @@
 {% block content %}
 
     <h1>Add Job</h1>
-        <Form Action="/cv/jobs/add" method="post">
+    <div class="alert alert-primary" role="alert">
+        {{ responseMessage}}
+    </div>
+
+        <Form Action="/cv/jobs/add" method="post" enctype="multipart/form-data">
                 <label for="">Title:</label>
                 <Input type="text" name = "title"></Input><br>
                 <label for="">Description:</label>
                 <Input type="text" name="description"></Input><br>
+                <Input type="file" name="logo"><br>
                 <Button type="submit">Save</Button>
         </Form>
 {% endblock %}

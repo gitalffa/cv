@@ -53,13 +53,33 @@ $map->get('addProjects', '/cv/projects/add',[
     'controller' => 'App\Controllers\ProjectsController',
     'action' => 'getAddProjectAction'
 ]);
+$map->get('addUsers', '/cv/users/add',[
+    'controller' => 'App\Controllers\UsersController',
+    'action' => 'getAddUserAction'
+]);
+
+$map->get('loginForm', '/cv/login',[
+    'controller' => 'App\Controllers\AuthController',
+    'action' => 'getLogin'
+]);
+
+$map->post('auth', '/cv/auth',[
+    'controller' => 'App\Controllers\AuthController',
+    'action' => 'postLogin'
+]);
+
 $map->post('saveJobs', '/cv/jobs/add',[
     'controller' => 'App\Controllers\JobsController',
     'action' => 'getAddJobAction'
 ]);
+
 $map->post('saveProject', '/cv/projects/add',[
     'controller' => 'App\Controllers\ProjectsController',
     'action' => 'getAddProjectAction'
+]);
+$map->post('saveUser', '/cv/users/add',[
+    'controller' => 'App\Controllers\UsersController',
+    'action' => 'getAddUserAction'
 ]);
 
 
