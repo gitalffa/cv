@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\User;
+use Laminas\Diactoros\Response\RedirectResponse;
 
 
 class AuthController extends BaseController{
@@ -14,15 +15,20 @@ class AuthController extends BaseController{
     public function postLogin($request){
         //var_dump($request);
         $postData = $request->getParsedBody();
+        $responseMessage = null;
         $user = User::Where('email',$postData['email'])->first();
         if($user){
             if(\password_verify($postData['password'],$user->password)){
-                echo 'rigth';
+                return new RedirectResponse('/cv/admin');
             }else{
-                echo 'wrong';
+                $responseMessage = 'Bad credenntials';
             }
         }else{
-            echo 'not found';
+            $responseMessage = 'Bad credenntials';
         }
+
+        return $this->renderHTML('login.twig',[
+            'responseMessage'=>$responseMessage
+        ]);
     }
 }
