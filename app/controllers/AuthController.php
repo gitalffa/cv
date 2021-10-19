@@ -19,6 +19,7 @@ class AuthController extends BaseController{
         $user = User::Where('email',$postData['email'])->first();
         if($user){
             if(\password_verify($postData['password'],$user->password)){
+                $_SESSION['userId'] = $user->id;
                 return new RedirectResponse('/cv/admin');
             }else{
                 $responseMessage = 'Bad credenntials';
@@ -31,4 +32,19 @@ class AuthController extends BaseController{
             'responseMessage'=>$responseMessage
         ]);
     }
+
+    public function getLogout(){
+        unset($_SESSION['userId']);
+        return new RedirectResponse('/cv/login');
+
+    }
+    public function getProtected(){
+        unset($_SESSION['userId']);
+        $responseMessage = 'Protected Route';
+        return $this->renderHTML('login.twig',[
+            'responseMessage'=>$responseMessage
+        ]);
+
+    }
+
 }

@@ -6,6 +6,9 @@ error_reporting(E_ALL);
 
 require_once '../vendor/autoload.php';
 
+session_start();
+
+use Laminas\Diactoros\Response\RedirectResponse;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Aura\Router\RouterContainer;
 
@@ -47,20 +50,35 @@ $map->get('index', '/cv/',[
 ]);
 $map->get('addJobs', '/cv/jobs/add',[
     'controller' => 'App\Controllers\JobsController',
-    'action' => 'getAddJobAction'
+    'action' => 'getAddJobAction',
+    'auth' => true
 ]);
 $map->get('addProjects', '/cv/projects/add',[
     'controller' => 'App\Controllers\ProjectsController',
-    'action' => 'getAddProjectAction'
+    'action' => 'getAddProjectAction',
+    'auth' => true
 ]);
 $map->get('addUsers', '/cv/users/add',[
     'controller' => 'App\Controllers\UsersController',
-    'action' => 'getAddUserAction'
+    'action' => 'getAddUserAction',
+    'auth' => true
 ]);
 
 $map->get('loginForm', '/cv/login',[
     'controller' => 'App\Controllers\AuthController',
     'action' => 'getLogin'
+]);
+
+$map->get('admin', '/cv/admin',[
+    'controller' => 'App\Controllers\AdminController',
+    'action' => 'getIndex',
+    'auth' => true
+]);
+
+$map->get('logout', '/cv/logout',[
+    'controller' => 'App\Controllers\AuthController',
+    'action' => 'getLogout',
+    'auth' => true
 ]);
 
 $map->post('auth', '/cv/auth',[
@@ -70,42 +88,26 @@ $map->post('auth', '/cv/auth',[
 
 $map->post('saveJobs', '/cv/jobs/add',[
     'controller' => 'App\Controllers\JobsController',
-    'action' => 'getAddJobAction'
+    'action' => 'getAddJobAction',
+    'auth' => true
 ]);
 
 $map->post('saveProject', '/cv/projects/add',[
     'controller' => 'App\Controllers\ProjectsController',
-    'action' => 'getAddProjectAction'
+    'action' => 'getAddProjectAction',
+    'auth' => true
 ]);
 $map->post('saveUser', '/cv/users/add',[
     'controller' => 'App\Controllers\UsersController',
-    'action' => 'getAddUserAction'
+    'action' => 'getAddUserAction',
+    'auth' => true
 ]);
 
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
 
-/* aqui vamos a dejar de manera temporal printElement()*/
 
-  function printElement( $job){
-    /* if($job->visible == false){
-      return;
-    }  */
- 
-    echo '<li class="work-position">';
-    echo '<h5>'.$job->title.'</h5>';
-    echo '<p>'. $job->description.'</p>';
-    echo '<p>'. $job->getDurationAsString().'</p>';
-   // echo '<p>'. $totalMonths.'</p>';
-    echo '<strong>Achievements:</strong>';
-    echo '<ul>';
-    echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-    echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-    echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-    echo '</ul>';
-    echo '</li>';
-  }
 
 
 if(!$route){
@@ -114,23 +116,35 @@ if(!$route){
     $handlerData = $route->handler;
     $controllerName=$handlerData['controller'];
     $actionName = $handlerData['action'];
+    $needsAuth = $handlerData['auth'] ?? false;
+    
+    $sessionUserID = $_SESSION['userId'] ?? null;
+    
+    if ($needsAuth && !$sessionUserID){
+        $controllerName='App\Controllers\AuthController';
+        $actionName = 'getProtected';
+        $needsAuth = true;
+        
+    }
+
+
     $controller = new $controllerName;
     $response = $controller->$actionName($request);
-
+    //var_dump($controller->$actionName($request));
     /* $métodos_clase = get_class_methods($response);
 
 
 foreach ($métodos_clase as $nombre_método) {
    echo "$nombre_método\n";
 } */
-    var_dump($response->getBody());
+   // var_dump($response->getBody());
     foreach($response->getHeaders() as $name => $values){
         foreach($values as $value ){
             header(sprintf('%s: %s',$name,$value),false);
         }
     }
     http_response_code($response->getStatusCode());
-   echo $response->getBody();
+    echo $response->getBody();
  
 }
 
